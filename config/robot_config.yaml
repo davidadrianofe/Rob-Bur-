@@ -1,0 +1,58 @@
+# Rob-Bur- Robot Configuration
+# Author: David Adriano Ferrari dos Santos
+
+robot:
+  name: "Rob-Bur-"
+  description: "Intelligent Robot with Local LLM AI"
+  model: "v1.0"
+  
+hardware:
+  motors:
+    - id: 1
+      type: "dc"
+      name: "left_motor"
+      pins:
+        forward: 17
+        backward: 27
+        pwm: 12
+    - id: 2
+      type: "dc"
+      name: "right_motor"
+      pins:
+        forward: 23
+        backward: 24
+        pwm: 13
+  
+  sensors:
+    - id: 1
+      type: "distance"
+      name: "front_sensor"
+      pin: 14
+    - id: 2
+      type: "imu"
+      name: "imu_sensor"
+      address: 0x68
+  
+  dimensions:
+    width: 0.2  # meters
+    length: 0.25  # meters
+    height: 0.15  # meters
+    wheel_radius: 0.05  # meters
+    axle_length: 0.2  # meters
+
+movement:
+  max_speed: 1.0  # m/s
+  max_angular_velocity: 2.0  # rad/s
+  acceleration: 0.5  # m/s²
+  deceleration: 0.5  # m/s²
+
+safety:
+  max_temperature: 60  # Celsius
+  min_battery: 5  # Percent
+  obstacle_detection_distance: 0.5  # meters
+  emergency_stop_enabled: true
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/robot.log"

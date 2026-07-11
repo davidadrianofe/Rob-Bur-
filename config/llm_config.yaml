@@ -1,0 +1,63 @@
+# LLM Configuration for Rob-Bur-
+# Author: David Adriano Ferrari dos Santos
+
+llm:
+  model: "llama2"
+  ollama_host: "http://localhost:11434"
+  
+  # Model parameters
+  temperature: 0.7
+  top_p: 0.9
+  top_k: 40
+  max_tokens: 512
+  
+  # Context window
+  context_window_size: 10
+  max_history: 100
+  
+  # Performance
+  cache_enabled: true
+  cache_max_size: 1000
+  timeout: 30  # seconds
+
+# Alternative models
+models:
+  llama2:
+    description: "Meta LLaMA 2 - Recommended"
+    size: "7b"  # or 13b, 70b
+  
+  mistral:
+    description: "Mistral 7B"
+    size: "7b"
+  
+  dolphin:
+    description: "Dolphin Mixtral"
+    size: "8x7b"
+  
+  neural-chat:
+    description: "Neural Chat 7B"
+    size: "7b"
+
+# Prompt templates
+prompts:
+  system: |
+    You are an intelligent robot control system (Rob-Bur-) powered by AI.
+    You make decisions about movement, automation, and monitoring.
+    Be precise, efficient, and safety-conscious.
+    Respond with clear actions and reasoning.
+  
+  movement: |
+    Interpret the following movement command for a robot:
+    Command: {command}
+    Current position: {position}
+    Robot state: {state}
+    
+    Provide detailed movement instructions.
+  
+  decision: |
+    Make an intelligent decision for robot control:
+    Situation: {situation}
+    Available options: {options}
+    Current context: {context}
+    
+    Provide your recommendation with reasoning.

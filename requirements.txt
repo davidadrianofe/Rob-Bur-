@@ -1,0 +1,59 @@
+# Core Dependencies
+python-dotenv==1.0.0
+pyyaml==6.0
+
+# LLM and AI
+ollama==0.1.0
+requests==2.31.0
+numpy==1.24.3
+scipy==1.11.1
+scikit-learn==1.3.0
+
+# Hardware Control
+RPi.GPIO==0.7.0  # Para Raspberry Pi
+python-smbus==1.1.post2  # Para I2C
+serialport==1.0.0  # Para comunicação serial
+
+# Motor and Sensor Control
+board==1.8
+adafruit-circuitpython-pwmio==1.10.3
+adafruit-circuitpython-motor==3.4.7
+adafruit-circuitpython-servokit==1.3.11
+
+# Monitoring and Logging
+loguru==0.7.0
+prometheus-client==0.17.1
+influxdb-client==1.36.0
+
+# Real-time Processing
+zinnia==1.0.0
+scipy==1.11.1
+pandas==2.0.3
+
+# Web Server and API
+fastapi==0.100.0
+uvicorn==0.23.1
+starlette==0.27.0
+
+# Database
+sqlalchemy==2.0.20
+sqlite3==3.41.2
+
+# Testing
+pytest==7.4.0
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+
+# Code Quality
+black==23.7.0
+flake8==6.0.0
+mypy==1.4.1
+
+# Utilities
+tqdm==4.66.1
+click==8.1.7
+colorama==0.4.6
+
+# Documentation
+sphinx==7.1.2
+sphinx-rtd-theme==1.3.0

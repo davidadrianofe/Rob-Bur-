@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Ollama LLM Service
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - rob-bur-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Optional: InfluxDB for metrics
+  influxdb:
+    image: influxdb:2.7
+    ports:
+      - "8086:8086"
+    environment:
+      - INFLUXDB_DB=rob_bur
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=password
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+    networks:
+      - rob-bur-network
+
+  # Optional: Grafana for visualization
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - rob-bur-network
+    depends_on:
+      - influxdb
+
+volumes:
+  ollama_data:
+  influxdb_data:
+  grafana_data:
+
+networks:
+  rob-bur-network:
+    driver: bridge
